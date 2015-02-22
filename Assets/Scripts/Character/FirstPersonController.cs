@@ -21,7 +21,7 @@ public class FirstPersonController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update() {
 	
 		// Left Right Camera Rotation
 		float leftRightRotation = Input.GetAxis("Mouse X") * mouseSensitivity;
@@ -38,12 +38,10 @@ public class FirstPersonController : MonoBehaviour {
 		float leftRightSpeed = Input.GetAxis("Horizontal")  * movementSpeed;
 
 		if(Input.GetButton("Sprint")){
-			Debug.Log("SPRINT");
 			forwardSpeed = forwardSpeed * sprintMultiplier;
 			leftRightSpeed = leftRightSpeed * sprintMultiplier;
 
 		}
-		Debug.Log ("Forward Speed: "+forwardSpeed);
 
 		verticalVelocity += Physics.gravity.y * Time.deltaTime;
 
