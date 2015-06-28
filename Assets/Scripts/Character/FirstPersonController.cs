@@ -28,9 +28,9 @@ public class FirstPersonController : MonoBehaviour {
 		transform.Rotate(0, leftRightRotation, 0);
 
 		// Up Down Camera Rotation
-		verticalRotation -= Input.GetAxis("Mouse Y") * mouseSensitivity;
-		verticalRotation = Mathf.Clamp(verticalRotation, -upDownRange, upDownRange);
-		Camera.main.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
+		//verticalRotation -= Input.GetAxis("Mouse Y") * mouseSensitivity;
+		//verticalRotation = Mathf.Clamp(verticalRotation, -upDownRange, upDownRange);
+		//Camera.main.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
 
 		// Move Forward, Backward, Left, and Right
 
