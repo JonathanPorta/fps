@@ -24,7 +24,7 @@ public class PerlinTerrain : ProceduralTerrain
 	/// <summary>
 	/// The number of noise layers. The more layers, the more fine detail. Leave at 1 for un-layered noise.
 	/// </summary>
-	public int m_LayerCount = 1;
+	public int m_LayerCount = 10;
 	
 	/// <summary>
 	/// Get the height of the terrain at any given position in local space.
