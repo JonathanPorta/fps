@@ -326,4 +326,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c1ff735668b6ca4080d8a6d59753e21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomSpeed: 0
+  zoomSpeed: 250

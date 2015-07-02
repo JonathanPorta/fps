@@ -30,7 +30,9 @@ public class AssignSplatMap : MonoBehaviour {
 				
 				// Calculate the steepness of the terrain
 				float steepness = terrainData.GetSteepness(y_01,x_01);
-				
+				Debug.Log("height: ");Debug.Log(height);
+				Debug.Log("normal: ");Debug.Log(normal);
+				Debug.Log("steepness: ");Debug.Log(steepness);
 				// Setup an array to record the mix of texture weights at this point
 				float[] splatWeights = new float[terrainData.alphamapLayers];
 				
@@ -40,16 +42,21 @@ public class AssignSplatMap : MonoBehaviour {
 				splatWeights[0] = 0.5f;
 				
 				// Texture[1] is stronger at lower altitudes
-				splatWeights[1] = Mathf.Clamp01((terrainData.heightmapHeight - height));
+				//splatWeights[1] = Mathf.Clamp01((terrainData.heightmapHeight - height));
 				
 				// Texture[2] stronger on flatter terrain
 				// Note "steepness" is unbounded, so we "normalise" it by dividing by the extent of heightmap height and scale factor
 				// Subtract result from 1.0 to give greater weighting to flat surfaces
-				splatWeights[2] = 1.0f - Mathf.Clamp01(steepness*steepness/(terrainData.heightmapHeight/5.0f));
+				//splatWeights[2] = 1.0f - Mathf.Clamp01(steepness*steepness/(terrainData.heightmapHeight/5.0f));
+				splatWeights[1] = 1.0f - Mathf.Clamp01(steepness*steepness/(terrainData.heightmapHeight/5.0f));
 				
-				// Texture[3] increases with height but only on surfaces facing positive Z axis 
-				splatWeights[3] = height * Mathf.Clamp01(normal.z);
-				
+				// Texture[3] increases with height but only on surfaces facing positive Z axis
+				//splatWeights[3] = height * Mathf.Clamp01(normal.z);
+				if(height >= 0.95f * terrainData.heightmapHeight){
+					splatWeights[2] = 1.0f;
+					Debug.Log("Height was in the 95% percentile.");
+				}
+
 				// Sum of all textures weights must add to 1, so calculate normalization factor from sum of weights
 				float z = splatWeights.Sum();
 				
